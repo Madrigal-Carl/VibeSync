@@ -67,25 +67,31 @@ joblib.dump(le, "backend/models/label_encoder.pkl")
 
 print("Label encoder classes:", le.classes_)
 
-# 8. Handle class imbalance
-ros = RandomOverSampler(random_state=42)
-X_resampled, y_resampled = ros.fit_resample(X_scaled, y_enc)
-print(f"Mood distribution after oversampling:\n{pd.Series(y_resampled).value_counts()}")
-
-# 9. Split train/test
+# 8. Split train/test (BEFORE oversampling)
 from sklearn.model_selection import train_test_split
+
 X_train, X_test, y_train_enc, y_test_enc = train_test_split(
-    X_resampled, y_resampled, test_size=0.2, random_state=42, stratify=y_resampled
+    X_scaled, y_enc, test_size=0.2, random_state=42, stratify=y_enc
 )
 
 # Convert encoded labels back to original strings for saving
 y_train = le.inverse_transform(y_train_enc)
 y_test = le.inverse_transform(y_test_enc)
 
+# 9. NOW oversample ONLY on the training set
+ros = RandomOverSampler(random_state=42)
+X_train_resampled, y_train_resampled = ros.fit_resample(X_train, y_train_enc)
+
+print("Training class distribution AFTER oversampling:\n",
+      pd.Series(y_train_resampled).value_counts())
+
+print("Testing class distribution (should be unchanged):\n",
+      pd.Series(y_test_enc).value_counts())
+
 # 10. Save processed data
-pd.DataFrame(X_train, columns=X.columns).to_csv("backend/data/processed/X_train.csv", index=False)
+pd.DataFrame(X_train_resampled, columns=X.columns).to_csv("backend/data/processed/X_train.csv", index=False)
 pd.DataFrame(X_test, columns=X.columns).to_csv("backend/data/processed/X_test.csv", index=False)
-pd.DataFrame(y_train, columns=["mood"]).to_csv("backend/data/processed/y_train.csv", index=False)
+pd.DataFrame(le.inverse_transform(y_train_resampled), columns=["mood"]).to_csv("backend/data/processed/y_train.csv", index=False)
 pd.DataFrame(y_test, columns=["mood"]).to_csv("backend/data/processed/y_test.csv", index=False)
 
 print("Preprocessing completed. Scaler, feature columns, and label encoder saved.")

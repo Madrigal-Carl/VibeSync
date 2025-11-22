@@ -26,15 +26,19 @@ le = joblib.load("backend/models/label_encoder.pkl")
 # ---- Load songs dataset with mood ----
 songs_df = pd.read_csv("backend/data/processed/spotify_songs_with_mood.csv")
 
-# ---- Define neural network architecture ----
+# ---- Define SAME neural network architecture used during training ----
 class MoodNN(nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
         super(MoodNN, self).__init__()
         self.model = nn.Sequential(
             nn.Linear(input_size, hidden_size),
             nn.ReLU(),
+            nn.Dropout(0.3),
+
             nn.Linear(hidden_size, hidden_size),
             nn.ReLU(),
+            nn.Dropout(0.3),
+
             nn.Linear(hidden_size, output_size)
         )
 
@@ -47,8 +51,9 @@ hidden_size = 64
 output_size = len(le.classes_)
 
 model = MoodNN(input_size, hidden_size, output_size)
-model.load_state_dict(torch.load("backend/models/mood_nn_model.pth"))
-model.eval()  # disables dropout
+model.load_state_dict(torch.load("backend/models/mood_nn_model.pth", map_location="cpu"))
+model.eval()
+
 
 # ---- Pydantic data model ----
 class SongFeatures(BaseModel):

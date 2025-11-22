@@ -27,8 +27,12 @@ class MoodNN(nn.Module):
         self.model = nn.Sequential(
             nn.Linear(input_size, hidden_size),
             nn.ReLU(),
+            nn.Dropout(0.3),
+
             nn.Linear(hidden_size, hidden_size),
             nn.ReLU(),
+            nn.Dropout(0.3),
+
             nn.Linear(hidden_size, output_size)
         )
 
@@ -49,6 +53,7 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 # Training loop
 epochs = 50
 batch_size = 128
+model.train()
 
 for epoch in range(epochs):
     permutation = torch.randperm(X_train.size(0))
@@ -68,6 +73,7 @@ for epoch in range(epochs):
     print(f"Epoch {epoch+1}/{epochs}, Loss: {epoch_loss:.4f}")
 
 # Evaluate
+model.eval()
 with torch.no_grad():
     outputs = model(X_test)
     _, predicted = torch.max(outputs, 1)
