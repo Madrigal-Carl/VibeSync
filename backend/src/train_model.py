@@ -1,43 +1,79 @@
-# src/train_model.py
-
-import os
+import torch
+import torch.nn as nn
+import torch.optim as optim
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 import joblib
 
-# 1. Load preprocessed (already scaled) data
-X_train = pd.read_csv("data/processed/X_train.csv")
-X_test = pd.read_csv("data/processed/X_test.csv")
-y_train = pd.read_csv("data/processed/y_train.csv").values.ravel()
-y_test = pd.read_csv("data/processed/y_test.csv").values.ravel()
+# Load data
+X_train = pd.read_csv("backend/data/processed/X_train.csv").values
+X_test = pd.read_csv("backend/data/processed/X_test.csv").values
+y_train = pd.read_csv("backend/data/processed/y_train.csv")["mood"].values
+y_test = pd.read_csv("backend/data/processed/y_test.csv")["mood"].values
 
-print(f"Training samples: {X_train.shape[0]}, Test samples: {X_test.shape[0]}")
+le = joblib.load("backend/models/label_encoder.pkl")
+y_train_enc = le.transform(y_train)
+y_test_enc = le.transform(y_test)
 
-# 2. Save the feature columns for prediction consistency
-feature_columns = list(X_train.columns)
-os.makedirs("models", exist_ok=True)
-joblib.dump(feature_columns, "models/feature_columns.pkl")
-print("Feature columns saved.")
+# Convert to tensors
+X_train = torch.tensor(X_train, dtype=torch.float32)
+X_test = torch.tensor(X_test, dtype=torch.float32)
+y_train_enc = torch.tensor(y_train_enc, dtype=torch.long)
+y_test_enc = torch.tensor(y_test_enc, dtype=torch.long)
 
-# 3. Initialize Random Forest classifier
-clf = RandomForestClassifier(
-    n_estimators=200,
-    max_depth=None,
-    random_state=42,
-    class_weight="balanced"
-)
+# Neural network with Dropout
+class MoodNN(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size):
+        super(MoodNN, self).__init__()
+        self.model = nn.Sequential(
+            nn.Linear(input_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, output_size)
+        )
 
-# 4. Train the model
-clf.fit(X_train, y_train)
-print("Model training completed.")
+    def forward(self, x):
+        return self.model(x)
 
-# 5. Evaluate the model
-y_pred = clf.predict(X_test)
-print("Accuracy:", accuracy_score(y_test, y_pred))
-print("\nClassification Report:\n", classification_report(y_test, y_pred))
-print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
 
-# 6. Save the trained model
-joblib.dump(clf, "models/mood_classifier_rf.pkl")
-print("Trained model saved to models/mood_classifier_rf.pkl")
+input_size = X_train.shape[1]
+hidden_size = 64
+output_size = len(le.classes_)
+
+model = MoodNN(input_size, hidden_size, output_size)
+
+# Loss and optimizer
+criterion = nn.CrossEntropyLoss(label_smoothing=0.1)  # label smoothing
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+# Training loop
+epochs = 50
+batch_size = 128
+
+for epoch in range(epochs):
+    permutation = torch.randperm(X_train.size(0))
+    epoch_loss = 0
+    
+    for i in range(0, X_train.size(0), batch_size):
+        indices = permutation[i:i+batch_size]
+        batch_x, batch_y = X_train[indices], y_train_enc[indices]
+        
+        optimizer.zero_grad()
+        outputs = model(batch_x)
+        loss = criterion(outputs, batch_y)
+        loss.backward()
+        optimizer.step()
+        epoch_loss += loss.item()
+    
+    print(f"Epoch {epoch+1}/{epochs}, Loss: {epoch_loss:.4f}")
+
+# Evaluate
+with torch.no_grad():
+    outputs = model(X_test)
+    _, predicted = torch.max(outputs, 1)
+    accuracy = (predicted == y_test_enc).sum().item() / y_test_enc.size(0)
+    print(f"Test Accuracy: {accuracy:.4f}")
+
+# Save model
+torch.save(model.state_dict(), "backend/models/mood_nn_model.pth")
+print("Model saved with dropout and label smoothing.")

@@ -1,32 +1,78 @@
-import pandas as pd
 import joblib
+import pandas as pd
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import random
 
-# 1. Load trained model, scaler, and feature columns
-clf = joblib.load("models/mood_classifier_rf.pkl")
-scaler = joblib.load("models/scaler.pkl")
-feature_columns = joblib.load("models/feature_columns.pkl")
-print("Model, scaler, and feature columns loaded.")
+# ---- Load scaler, feature columns, label encoder ----
+scaler = joblib.load("backend/models/scaler.pkl")
+feature_columns = joblib.load("backend/models/feature_columns.pkl")
+le = joblib.load("backend/models/label_encoder.pkl")
 
-# 2. Example: New song features (replace with real values)
-new_song_features = pd.DataFrame([{
-    "danceability": 0.8,
-    "energy": 0.7,
-    "loudness": -5.0,
-    "speechiness": 0.05,
-    "acousticness": 0.1,
-    "instrumentalness": 0.0,
-    "liveness": 0.15,
-    "valence": 0.9,
-    "tempo": 120.0
-}])
+# ---- Load songs dataset with mood ----
+songs_df = pd.read_csv("backend/data/processed/spotify_songs_with_mood.csv")
 
-# 3. Reorder columns to match training data
-new_song_features = new_song_features[feature_columns]
+# ---- Define neural network architecture (matches trained model) ----
+class MoodNN(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size):
+        super(MoodNN, self).__init__()
+        self.model = nn.Sequential(
+            nn.Linear(input_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, output_size)
+        )
 
-# 4. Scale features
-new_song_scaled = scaler.transform(new_song_features)
-new_song_scaled = pd.DataFrame(new_song_scaled, columns=feature_columns)  # keep feature names
+    def forward(self, x):
+        return self.model(x)
 
-# 5. Predict mood
-predicted_mood = clf.predict(new_song_scaled)
-print(f"Predicted mood: {predicted_mood[0]}")
+# ---- Load trained model weights ----
+input_size = len(feature_columns)
+hidden_size = 64
+output_size = len(le.classes_)
+
+model = MoodNN(input_size, hidden_size, output_size)
+model.load_state_dict(torch.load("backend/models/mood_nn_model.pth"))
+model.eval()  # disables dropout
+
+# ---- Randomize features ----
+features = {
+    "danceability": round(random.uniform(0, 1), 2),
+    "energy": round(random.uniform(0, 1), 2),
+    "loudness": round(random.uniform(-60, 0), 2),
+    "speechiness": round(random.uniform(0, 1), 2),
+    "acousticness": round(random.uniform(0, 1), 2),
+    "instrumentalness": round(random.uniform(0, 1), 2),
+    "liveness": round(random.uniform(0, 1), 2),
+    "valence": round(random.uniform(0, 1), 2),
+    "tempo": round(random.uniform(60, 200), 2)
+}
+
+# ---- Convert to DataFrame & scale ----
+df = pd.DataFrame([features])[feature_columns]
+scaled = scaler.transform(df)
+tensor_input = torch.tensor(scaled, dtype=torch.float32)
+
+# ---- Predict ----
+with torch.no_grad():
+    outputs = model(tensor_input)
+    probs = F.softmax(outputs, dim=1)
+    confidence, predicted_idx = torch.max(probs, 1)
+    mood = le.inverse_transform(predicted_idx.numpy())[0]
+    confidence = confidence.item()
+
+# ---- Recommend songs ----
+mood_songs = songs_df[songs_df["mood"] == mood]
+recommended_songs = []
+if len(mood_songs) > 0:
+    recommended_songs = mood_songs.sample(
+        min(3, len(mood_songs))
+    )[["track_name", "artists"]].to_dict(orient="records")
+
+# ---- Print results ----
+print("Randomized Features:", features)
+print("Predicted Mood:", mood)
+print("Confidence:", round(confidence*100, 2), "%")
+print("Recommended Songs:", recommended_songs)
