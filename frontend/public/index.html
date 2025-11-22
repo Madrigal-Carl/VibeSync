@@ -84,18 +84,9 @@
 
         <div class="w-full h-fit grid grid-cols-3 grid-rows-2 gap-8">
             <!-- Big left block -->
-            <div
-                class="col-span-2 row-span-2 p-8 gap-6 rounded-4xl flex flex-col justify-between bg-black/80 backdrop-blur-3xl border border-white/20">
+            <div id="inputs-container"
+                class="col-span-3 row-span-2 p-8 gap-6 rounded-4xl flex flex-col justify-between bg-black/80 backdrop-blur-3xl border border-white/20">
                 <h1 class="text-2xl font-semibold">Let’s Sync your Mood</h1>
-                <input type="text"
-                    class="px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
-                    placeholder="Paste Spotify Link" />
-                <div class="flex items-center gap-2">
-                    <hr class="w-full border border-white/10" />
-                    <p>or</p>
-                    <hr class="w-full border border-white/10" />
-                </div>
-
                 <div class="flex flex-col gap-6">
                     <h1 class="text-2xl font-semibold">Manual input</h1>
                     <div class="w-full grid grid-cols-2 gap-4">
@@ -156,7 +147,8 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-4 self-end">
-                    <button class="py-2 px-4 rounded-full border border-[#d400ff] hover:scale-110 cursor-pointer">
+                    <button onclick="clearInput()"
+                        class="py-2 px-4 rounded-full border border-[#d400ff] hover:scale-110 cursor-pointer">
                         Clear
                     </button>
                     <button onclick="predictMood()"
@@ -167,8 +159,8 @@
                 </div>
             </div>
             <!-- Top right -->
-            <div
-                class="col-span-1 row-span-1 p-8 rounded-4xl flex flex-col items-center justify-between bg-black/80 backdrop-blur-3xl border border-white/20">
+            <div id="mood-section"
+                class="hidden col-span-1 row-span-1 p-8 rounded-4xl flex flex-col items-center justify-between bg-black/80 backdrop-blur-3xl border border-white/20">
                 <div id="chart" class="w-60"></div>
                 <div class="flex flex-col items-center relative transform -translate-y-6">
                     <h1 class="text-3xl">80%</h1>
@@ -180,43 +172,10 @@
             </div>
 
             <!-- Bottom right -->
-            <div class="col-span-1 row-span-1 p-8 gap-6 rounded-4xl flex flex-col bg-black/80 border border-white/10">
+            <div id="recommended-section"
+                class="hidden col-span-1 row-span-1 p-8 gap-6 rounded-4xl flex flex-col bg-black/80 border border-white/10">
                 <h1 class="text-2xl font-semibold">Recommended Songs</h1>
-                <div class="flex flex-col gap-3">
-                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 flex items-center gap-4 justify-between">
-                        <div class="flex flex-col">
-                            <h1 class="text-xl font-semibold">Breath</h1>
-                            <small class="text-white/50 text-lg">Years & Years</small>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px"
-                            fill="#e3e3e3">
-                            <path
-                                d="m426-330 195-125q14-9 14-25t-14-25L426-630q-15-10-30.5-1.5T380-605v250q0 18 15.5 26.5T426-330Zm54 250q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z" />
-                        </svg>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 flex items-center gap-4 justify-between">
-                        <div class="flex flex-col">
-                            <h1 class="text-xl font-semibold">Breath</h1>
-                            <small class="text-white/50 text-lg">Years & Years</small>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px"
-                            fill="#e3e3e3">
-                            <path
-                                d="m426-330 195-125q14-9 14-25t-14-25L426-630q-15-10-30.5-1.5T380-605v250q0 18 15.5 26.5T426-330Zm54 250q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z" />
-                        </svg>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 flex items-center gap-4 justify-between">
-                        <div class="flex flex-col">
-                            <h1 class="text-xl font-semibold">Breath</h1>
-                            <small class="text-white/50 text-lg">Years & Years</small>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px"
-                            fill="#e3e3e3">
-                            <path
-                                d="m426-330 195-125q14-9 14-25t-14-25L426-630q-15-10-30.5-1.5T380-605v250q0 18 15.5 26.5T426-330Zm54 250q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z" />
-                        </svg>
-                    </div>
-                </div>
+                <div id="recommended-songs-container" class="flex flex-col gap-3"></div>
             </div>
         </div>
     </section>
