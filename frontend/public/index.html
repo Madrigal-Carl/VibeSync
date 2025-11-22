@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
@@ -8,396 +9,312 @@
     <link href="../src/output.css" rel="stylesheet" />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="/frontend/src/script.js"></script>
-  </head>
+</head>
 
-  <body class="bg-[#0A0A0A] text-white">
+<body class="bg-[#0A0A0A] text-white">
     <section
-      class="w-dvw min-h-dvh bg-[url('/frontend/src/images/hero.png')] bg-cover bg-center flex flex-col items-center justify-between py-10 px-40 relative"
-    >
-      <nav class="w-full flex items-center justify-between z-10 relative">
-        <img src="/frontend/src/images/VibeSync.png" class="h-8" alt="" />
-        <div
-          class="flex items-center gap-2 bg-white/10 p-1 rounded-full border border-white/20 backdrop-blur-md mr-15"
-        >
-          <a
-            href="#"
-            class="py-2 px-4 rounded-full bg-[#0A0A0A] shadow-[inset_0_0_12px_#DD00FF]"
-            >Home</a
-          >
-          <a href="#" class="py-2 px-4 rounded-full">Features</a>
-          <a href="#" class="py-2 px-4 rounded-full">Demo</a>
+        class="w-dvw min-h-dvh bg-[url('/frontend/src/images/hero.png')] bg-cover bg-center flex flex-col items-center justify-between py-10 px-40 relative">
+        <nav class="w-full flex items-center justify-between z-10 relative">
+            <img src="/frontend/src/images/VibeSync.png" class="h-8" alt="" />
+            <div
+                class="flex items-center gap-2 bg-white/10 p-1 rounded-full border border-white/20 backdrop-blur-md mr-15">
+                <a href="#" class="py-2 px-4 rounded-full bg-[#0A0A0A] shadow-[inset_0_0_12px_#DD00FF]">Home</a>
+                <a href="#" class="py-2 px-4 rounded-full">Features</a>
+                <a href="#" class="py-2 px-4 rounded-full">Demo</a>
+            </div>
+            <a href=""
+                class="py-2 px-4 rounded-full bg-[#DD00FF] shadow-[inset_0_0_20px_#6A00FF] hover:scale-110 cursor-pointer">Sign
+                Up</a>
+        </nav>
+
+        <img src="/frontend/src/images/headphone.png"
+            class="h-230 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 mask-b-from-30% to-transparent floating"
+            alt="" />
+
+        <div class="z-10 flex flex-col gap-16 items-center">
+            <div class="flex flex-col gap-4 items-center">
+                <h1
+                    class="text-8xl font-semibold bg-linear-to-l from-[#6A00FF] via-[#d400ff] to-[#6A00FF] bg-clip-text text-transparent text-shadow:0_0_60px_#6A00FF">
+                    VibeSync
+                </h1>
+                <p class="text-3xl w-120 text-center text-white/60">
+                    Turn any audio into a mood - and let your playlist follow.
+                </p>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button
+                    class="py-2 px-4 rounded-full bg-[#DD00FF] border border-white/10 hover:scale-110 cursor-pointer"
+                    style="box-shadow: 0 0 60px #6a00ff, inset 0 0 20px #6a00ff">
+                    Try Demo
+                </button>
+                <button class="py-2 px-4 rounded-full border border-[#d400ff] hover:scale-110 cursor-pointer">
+                    Learn More
+                </button>
+            </div>
         </div>
-        <a
-          href=""
-          class="py-2 px-4 rounded-full bg-[#DD00FF] shadow-[inset_0_0_20px_#6A00FF] hover:scale-110 cursor-pointer"
-          >Sign Up</a
-        >
-      </nav>
 
-      <img
-        src="/frontend/src/images/headphone.png"
-        class="h-230 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 mask-b-from-30% to-transparent floating"
-        alt=""
-      />
+        <img src="/frontend/src/images/Vector.png" class="w-200 z-10" alt="" />
+    </section>
 
-      <div class="z-10 flex flex-col gap-16 items-center">
-        <div class="flex flex-col gap-4 items-center">
-          <h1
-            class="text-8xl font-semibold bg-gradient-to-l from-[#6A00FF] via-[#d400ff] to-[#6A00FF] bg-clip-text text-transparent [text-shadow:_0_0_60px_#6A00FF]"
-          >
-            VibeSync
-          </h1>
-          <p class="text-3xl w-120 text-center text-white/60">
-            Turn any audio into a mood - and let your playlist follow.
-          </p>
+    <section class="w-dvw min-h-dvh flex flex-col items-center justify-center py-40 px-40 relative gap-8">
+        <h1
+            class="text-4xl font-semibold bg-linear-to-l from-[#999999] via-[#ffffff] to-[#999999] bg-clip-text text-transparent">
+            Features
+        </h1>
+        <div class="flex items-center gap-8">
+            <img src="/frontend/src/images/ai.png"
+                class="w-100 hover:transform hover:-translate-y-5 cursor-pointer transition-all duration-300" alt="" />
+            <img src="/frontend/src/images/score.png"
+                class="w-100 hover:transform hover:-translate-y-5 cursor-pointer transition-all duration-300" alt="" />
+            <img src="/frontend/src/images/fast.png"
+                class="w-100 hover:transform hover:-translate-y-5 cursor-pointer transition-all duration-300" alt="" />
         </div>
-
-        <div class="flex items-center gap-4">
-          <button
-            class="py-2 px-4 rounded-full bg-[#DD00FF] border border-white/10 hover:scale-110 cursor-pointer"
-            style="box-shadow: 0 0 60px #6a00ff, inset 0 0 20px #6a00ff"
-          >
-            Try Demo
-          </button>
-          <button
-            class="py-2 px-4 rounded-full border border-[#d400ff] hover:scale-110 cursor-pointer"
-          >
-            Learn More
-          </button>
-        </div>
-      </div>
-
-      <img src="/frontend/src/images/Vector.png" class="w-200 z-10" alt="" />
     </section>
 
     <section
-      class="w-dvw min-h-dvh flex flex-col items-center justify-center py-40 px-40 relative gap-8"
-    >
-      <h1
-        class="text-4xl font-semibold bg-gradient-to-l from-[#999999] via-[#ffffff] to-[#999999] bg-clip-text text-transparent"
-      >
-        Features
-      </h1>
-      <div class="flex items-center gap-8">
-        <img
-          src="/frontend/src/images/ai.png"
-          class="w-100 hover:transform hover:-translate-y-5 cursor-pointer transition-all duration-300"
-          alt=""
-        />
-        <img
-          src="/frontend/src/images/score.png"
-          class="w-100 hover:transform hover:-translate-y-5 cursor-pointer transition-all duration-300"
-          alt=""
-        />
-        <img
-          src="/frontend/src/images/fast.png"
-          class="w-100 hover:transform hover:-translate-y-5 cursor-pointer transition-all duration-300"
-          alt=""
-        />
-      </div>
+        class="w-dvw h-fit flex flex-col items-center justify-center pt-20 pb-40 px-40 relative gap-8 bg-[url('/frontend/src/images/demo-bg.png')] bg-cover bg-bottom">
+        <h1
+            class="text-4xl font-semibold bg-linear-to-l from-[#999999] via-[#ffffff] to-[#999999] bg-clip-text text-transparent">
+            Demo
+        </h1>
+
+        <div class="w-full h-fit grid grid-cols-3 grid-rows-2 gap-8">
+            <!-- Big left block -->
+            <div
+                class="col-span-2 row-span-2 p-8 gap-6 rounded-4xl flex flex-col justify-between bg-black/80 backdrop-blur-3xl border border-white/20">
+                <h1 class="text-2xl font-semibold">Let’s Sync your Mood</h1>
+                <input type="text"
+                    class="px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
+                    placeholder="Paste Spotify Link" />
+                <div class="flex items-center gap-2">
+                    <hr class="w-full border border-white/10" />
+                    <p>or</p>
+                    <hr class="w-full border border-white/10" />
+                </div>
+
+                <div class="flex flex-col gap-6">
+                    <h1 class="text-2xl font-semibold">Manual input</h1>
+                    <div class="w-full grid grid-cols-2 gap-4">
+                        <div class="w-full col-span-1 flex flex-col gap-1">
+                            <p>Danceability</p>
+                            <input type="text"
+                                class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
+                                placeholder="(0-1)" />
+                        </div>
+                        <div class="w-full col-span-1 flex flex-col gap-1">
+                            <p>Energy</p>
+                            <input type="text"
+                                class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
+                                placeholder="(0-1)" />
+                        </div>
+                        <div class="w-full col-span-1 flex flex-col gap-1">
+                            <p>Loudness</p>
+                            <input type="text"
+                                class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
+                                placeholder="(-60 to 0 db)" />
+                        </div>
+                        <div class="w-full col-span-1 flex flex-col gap-1">
+                            Speechness
+                            <input type="text"
+                                class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
+                                placeholder="(0-10)" />
+                        </div>
+                        <div class="w-full col-span-1 flex flex-col gap-1">
+                            Acousticness
+                            <input type="text"
+                                class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
+                                placeholder="(0-1)" />
+                        </div>
+                        <div class="w-full col-span-1 flex flex-col gap-1">
+                            Instrumentalness
+                            <input type="text"
+                                class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
+                                placeholder="(0-1)" />
+                        </div>
+                        <div class="w-full col-span-1 flex flex-col gap-1">
+                            Liveliness
+                            <input type="text"
+                                class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
+                                placeholder="(0-1)" />
+                        </div>
+                        <div class="w-full col-span-1 flex flex-col gap-1">
+                            Valence
+                            <input type="text"
+                                class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
+                                placeholder="(0-1)" />
+                        </div>
+                        <div class="w-full col-span-2 flex flex-col gap-1">
+                            Tempo
+                            <input type="text"
+                                class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
+                                placeholder="(BPM)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 self-end">
+                    <button class="py-2 px-4 rounded-full border border-[#d400ff] hover:scale-110 cursor-pointer">
+                        Clear
+                    </button>
+                    <button
+                        class="py-2 px-4 rounded-full bg-[#DD00FF] border border-white/10 hover:scale-110 cursor-pointer"
+                        style="box-shadow: 0 0 60px #6a00ff, inset 0 0 20px #6a00ff">
+                        Sync Mood
+                    </button>
+                </div>
+            </div>
+
+            <!-- Top right -->
+            <div
+                class="col-span-1 row-span-1 p-8 rounded-4xl flex flex-col items-center justify-between bg-black/80 backdrop-blur-3xl border border-white/20">
+                <div id="chart" class="w-60"></div>
+                <div class="flex flex-col items-center relative transform -translate-y-6">
+                    <h1 class="text-3xl">80%</h1>
+                    <h1
+                        class="text-5xl font-semibold bg-linear-to-l from-[#6A00FF] via-[#d400ff] to-[#6A00FF] bg-clip-text text-transparent text-shadow:0_0_60px_#6A00FF">
+                        Happy
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Bottom right -->
+            <div class="col-span-1 row-span-1 p-8 gap-6 rounded-4xl flex flex-col bg-black/80 border border-white/10">
+                <h1 class="text-2xl font-semibold">Recommended Songs</h1>
+                <div class="flex flex-col gap-3">
+                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 flex items-center gap-4 justify-between">
+                        <div class="flex flex-col">
+                            <h1 class="text-xl font-semibold">Breath</h1>
+                            <small class="text-white/50 text-lg">Years & Years</small>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px"
+                            fill="#e3e3e3">
+                            <path
+                                d="m426-330 195-125q14-9 14-25t-14-25L426-630q-15-10-30.5-1.5T380-605v250q0 18 15.5 26.5T426-330Zm54 250q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z" />
+                        </svg>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 flex items-center gap-4 justify-between">
+                        <div class="flex flex-col">
+                            <h1 class="text-xl font-semibold">Breath</h1>
+                            <small class="text-white/50 text-lg">Years & Years</small>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px"
+                            fill="#e3e3e3">
+                            <path
+                                d="m426-330 195-125q14-9 14-25t-14-25L426-630q-15-10-30.5-1.5T380-605v250q0 18 15.5 26.5T426-330Zm54 250q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z" />
+                        </svg>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 flex items-center gap-4 justify-between">
+                        <div class="flex flex-col">
+                            <h1 class="text-xl font-semibold">Breath</h1>
+                            <small class="text-white/50 text-lg">Years & Years</small>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px"
+                            fill="#e3e3e3">
+                            <path
+                                d="m426-330 195-125q14-9 14-25t-14-25L426-630q-15-10-30.5-1.5T380-605v250q0 18 15.5 26.5T426-330Zm54 250q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section
-      class="w-dvw h-fit flex flex-col items-center justify-center pt-20 pb-40 px-40 relative gap-8 bg-[url('/frontend/src/images/demo-bg.png')] bg-cover bg-bottom"
-    >
-      <h1
-        class="text-4xl font-semibold bg-gradient-to-l from-[#999999] via-[#ffffff] to-[#999999] bg-clip-text text-transparent"
-      >
-        Demo
-      </h1>
-
-      <div class="w-full h-fit grid grid-cols-3 grid-rows-2 gap-8">
-        <!-- Big left block -->
-        <div
-          class="col-span-2 row-span-2 p-8 gap-6 rounded-4xl flex flex-col justify-between bg-black/80 backdrop-blur-3xl border border-white/20"
-        >
-          <h1 class="text-2xl font-semibold">Let’s Sync your Mood</h1>
-          <input
-            type="text"
-            class="px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
-            placeholder="Paste Spotify Link"
-          />
-          <div class="flex items-center gap-2">
-            <hr class="w-full border border-white/10" />
-            <p>or</p>
-            <hr class="w-full border border-white/10" />
-          </div>
-
-          <div class="flex flex-col gap-6">
-            <h1 class="text-2xl font-semibold">Manual input</h1>
-            <div class="w-full grid grid-cols-2 gap-4">
-              <div class="w-full col-span-1 flex flex-col gap-1">
-                <p>Danceability</p>
-                <input
-                  type="text"
-                  class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
-                  placeholder="(0-1)"
-                />
-              </div>
-              <div class="w-full col-span-1 flex flex-col gap-1">
-                <p>Energy</p>
-                <input
-                  type="text"
-                  class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
-                  placeholder="(0-1)"
-                />
-              </div>
-              <div class="w-full col-span-1 flex flex-col gap-1">
-                <p>Loudness</p>
-                <input
-                  type="text"
-                  class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
-                  placeholder="(-60 to 0 db)"
-                />
-              </div>
-              <div class="w-full col-span-1 flex flex-col gap-1">
-                Speechness
-                <input
-                  type="text"
-                  class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
-                  placeholder="(0-10)"
-                />
-              </div>
-              <div class="w-full col-span-1 flex flex-col gap-1">
-                Acousticness
-                <input
-                  type="text"
-                  class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
-                  placeholder="(0-1)"
-                />
-              </div>
-              <div class="w-full col-span-1 flex flex-col gap-1">
-                Instrumentalness
-                <input
-                  type="text"
-                  class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
-                  placeholder="(0-1)"
-                />
-              </div>
-              <div class="w-full col-span-1 flex flex-col gap-1">
-                Liveliness
-                <input
-                  type="text"
-                  class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
-                  placeholder="(0-1)"
-                />
-              </div>
-              <div class="w-full col-span-1 flex flex-col gap-1">
-                Valence
-                <input
-                  type="text"
-                  class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
-                  placeholder="(0-1)"
-                />
-              </div>
-              <div class="w-full col-span-2 flex flex-col gap-1">
-                Tempo
-                <input
-                  type="text"
-                  class="w-full mb-4 px-4 py-2 rounded-lg border border-white/20 outline-0 hover:border-[#DD00FF] bg-white/10 placeholder-white/60 focus:border-[#DD00FF] focus:border"
-                  placeholder="(BPM)"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="flex items-center gap-4 self-end">
-            <button
-              class="py-2 px-4 rounded-full border border-[#d400ff] hover:scale-110 cursor-pointer"
-            >
-              Clear
-            </button>
-            <button
-              class="py-2 px-4 rounded-full bg-[#DD00FF] border border-white/10 hover:scale-110 cursor-pointer"
-              style="box-shadow: 0 0 60px #6a00ff, inset 0 0 20px #6a00ff"
-            >
-              Sync Mood
-            </button>
-          </div>
-        </div>
-
-        <!-- Top right -->
-        <div
-          class="col-span-1 row-span-1 p-8 rounded-4xl flex flex-col items-center justify-between bg-black/80 backdrop-blur-3xl border border-white/20"
-        >
-          <div id="chart" class="w-60"></div>
-          <div
-            class="flex flex-col items-center relative transform -translate-y-6"
-          >
-            <h1 class="text-3xl">80%</h1>
-            <h1
-              class="text-5xl font-semibold bg-gradient-to-l from-[#6A00FF] via-[#d400ff] to-[#6A00FF] bg-clip-text text-transparent [text-shadow:_0_0_60px_#6A00FF]"
-            >
-              Happy
-            </h1>
-          </div>
-        </div>
-
-        <!-- Bottom right -->
-        <div
-          class="col-span-1 row-span-1 p-8 gap-6 rounded-4xl flex flex-col bg-black/80 border border-white/10"
-        >
-          <h1 class="text-2xl font-semibold">Recommended Songs</h1>
-          <div class="flex flex-col gap-3">
-            <div
-              class="bg-white/10 backdrop-blur-md rounded-xl p-4 flex items-center gap-4 justify-between"
-            >
-              <div class="flex flex-col">
-                <h1 class="text-xl font-semibold">Breath</h1>
-                <small class="text-white/50 text-lg">Years & Years</small>
-              </div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="48px"
-                viewBox="0 -960 960 960"
-                width="48px"
-                fill="#e3e3e3"
-              >
-                <path
-                  d="m426-330 195-125q14-9 14-25t-14-25L426-630q-15-10-30.5-1.5T380-605v250q0 18 15.5 26.5T426-330Zm54 250q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
-                />
-              </svg>
-            </div>
-            <div
-              class="bg-white/10 backdrop-blur-md rounded-xl p-4 flex items-center gap-4 justify-between"
-            >
-              <div class="flex flex-col">
-                <h1 class="text-xl font-semibold">Breath</h1>
-                <small class="text-white/50 text-lg">Years & Years</small>
-              </div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="48px"
-                viewBox="0 -960 960 960"
-                width="48px"
-                fill="#e3e3e3"
-              >
-                <path
-                  d="m426-330 195-125q14-9 14-25t-14-25L426-630q-15-10-30.5-1.5T380-605v250q0 18 15.5 26.5T426-330Zm54 250q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
-                />
-              </svg>
-            </div>
-            <div
-              class="bg-white/10 backdrop-blur-md rounded-xl p-4 flex items-center gap-4 justify-between"
-            >
-              <div class="flex flex-col">
-                <h1 class="text-xl font-semibold">Breath</h1>
-                <small class="text-white/50 text-lg">Years & Years</small>
-              </div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="48px"
-                viewBox="0 -960 960 960"
-                width="48px"
-                fill="#e3e3e3"
-              >
-                <path
-                  d="m426-330 195-125q14-9 14-25t-14-25L426-630q-15-10-30.5-1.5T380-605v250q0 18 15.5 26.5T426-330Zm54 250q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer
-      class="w-dvw h-20 flex items-center justify-center bg-black/80 border-t border-white/10"
-    >
-      <p class="text-white/50">
-        &copy; 2025 Carl Madrigal and Dave Geroleo. All rights reserved
-      </p>
+    <footer class="w-dvw h-20 flex items-center justify-center bg-black/80 border-t border-white/10">
+        <p class="text-white/50">
+            &copy; 2025 Carl Madrigal and Dave Geroleo. All rights reserved
+        </p>
     </footer>
 
     <script>
-      var options = {
-        series: [75],
-        chart: {
-          height: 350,
-          type: "radialBar",
-          toolbar: {
-            show: false,
-          },
-        },
-        plotOptions: {
-          radialBar: {
-            startAngle: -135,
-            endAngle: 225,
-            hollow: {
-              margin: 0,
-              size: "70%",
-              image: undefined,
-              imageOffsetX: 0,
-              imageOffsetY: 0,
-              position: "front",
-              dropShadow: {
-                enabled: true,
-                top: 3,
-                left: 0,
-                blur: 4,
-                opacity: 0.5,
-              },
-            },
-            track: {
-              background: "#ffffff05",
-              strokeWidth: "100%",
-              margin: 0, // margin is in pixels
-              dropShadow: {
-                enabled: true,
-                top: -3,
-                left: 0,
-                blur: 4,
-                opacity: 0.7,
-              },
-            },
-
-            dataLabels: {
-              show: true,
-              name: {
-                offsetY: 35,
-                show: true,
-                color: "#888",
-                fontSize: "100px",
-              },
-              value: {
-                formatter: function (val) {
-                  return parseInt(val);
+        var options = {
+            series: [75],
+            chart: {
+                height: 350,
+                type: "radialBar",
+                toolbar: {
+                    show: false,
                 },
-                color: "#fff",
-                fontSize: "36px",
-                show: false,
-                offsetY: 120,
-              },
             },
-          },
-        },
-        fill: {
-          type: "gradient",
-          gradient: {
-            shade: "dark",
-            type: "horizontal",
-            shadeIntensity: 0.5,
-            gradientToColors: ["#FB00FF", "#6A00FF"],
-            inverseColors: false,
-            opacityFrom: 1,
-            opacityTo: 1,
-            stops: [0, 100],
-          },
-        },
-        stroke: {
-          lineCap: "round",
-          colors: ["#FB00FF", "#6A00FF"],
-        },
-        labels: ["😊"],
-      };
+            plotOptions: {
+                radialBar: {
+                    startAngle: -135,
+                    endAngle: 225,
+                    hollow: {
+                        margin: 0,
+                        size: "70%",
+                        image: undefined,
+                        imageOffsetX: 0,
+                        imageOffsetY: 0,
+                        position: "front",
+                        dropShadow: {
+                            enabled: true,
+                            top: 3,
+                            left: 0,
+                            blur: 4,
+                            opacity: 0.5,
+                        },
+                    },
+                    track: {
+                        background: "#ffffff05",
+                        strokeWidth: "100%",
+                        margin: 0, // margin is in pixels
+                        dropShadow: {
+                            enabled: true,
+                            top: -3,
+                            left: 0,
+                            blur: 4,
+                            opacity: 0.7,
+                        },
+                    },
 
-      var chart = new ApexCharts(document.querySelector("#chart"), options);
-      chart.render();
+                    dataLabels: {
+                        show: true,
+                        name: {
+                            offsetY: 35,
+                            show: true,
+                            color: "#888",
+                            fontSize: "100px",
+                        },
+                        value: {
+                            formatter: function (val) {
+                                return parseInt(val);
+                            },
+                            color: "#fff",
+                            fontSize: "36px",
+                            show: false,
+                            offsetY: 120,
+                        },
+                    },
+                },
+            },
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shade: "dark",
+                    type: "horizontal",
+                    shadeIntensity: 0.5,
+                    gradientToColors: ["#FB00FF", "#6A00FF"],
+                    inverseColors: false,
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [0, 100],
+                },
+            },
+            stroke: {
+                lineCap: "round",
+                colors: ["#FB00FF", "#6A00FF"],
+            },
+            labels: ["😊"],
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
     </script>
-  </body>
+</body>
+
 </html>
