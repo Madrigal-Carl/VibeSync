@@ -53,25 +53,3 @@ def predict_single(features: SongFeatures):
         "mood": mood,
         "confidence": round(confidence, 2)
     }
-
-
-# ---- MULTIPLE PREDICTION ----
-
-@app.post("/predict/batch")
-def predict_batch(data: SongBatch):
-    df = pd.DataFrame([s.dict() for s in data.songs])
-    df = df[feature_columns]
-
-    scaled = scaler.transform(df)
-
-    moods = model.predict(scaled)
-    probs = model.predict_proba(scaled)
-
-    results = []
-    for i, mood in enumerate(moods):
-        results.append({
-            "mood": mood,
-            "confidence": round(max(probs[i]) * 100, 2)
-        })
-
-    return {"results": results}
