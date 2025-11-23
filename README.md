@@ -67,26 +67,7 @@ All of these are already listed inside **`backend/requirements.txt`**.
 
 ---
 
-## 🛠 1. Create Virtual Environment
-
-### Windows (PowerShell)
-```ps
-cd backend
-python -m venv venv
-.\venv\Scripts\activate
-````
-
-### macOS / Linux
-
-```bash
-cd backend
-python3 -m venv venv
-source venv/bin/activate
-```
-
----
-
-## 📦 2. Install Dependencies
+## 📦 1. Install Dependencies
 
 Make sure your virtual environment is active, then:
 
@@ -97,22 +78,18 @@ pip install -r requirements.txt
 
 ---
 
-## 🤖 3. Run the FastAPI Backend
+## 🤖 2. Run the FastAPI Backend
 
 Inside `backend/`:
 
 ```bash
-uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn backend.main:app --reload
 ```
 
-Server will start at:
-
-👉 [http://localhost:8000](http://localhost:8000)
-👉 API docs: [http://localhost:8000/docs](http://localhost:8000/docs)
-
+👉 Server will start
 ---
 
-# 🎨 4. Install Frontend (Tailwind)
+# 🎨 3. Install Frontend (Tailwind)
 
 Go to frontend:
 
@@ -151,3 +128,4 @@ Made with AI, music, and caffeine.
 ```
 
 ```
+````
