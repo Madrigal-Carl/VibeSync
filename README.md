@@ -1,6 +1,3 @@
-# **VibeSync**
-
-```md
 # 🎧 VibeSync — Mood Detection from Audio Features
 
 A simple, lightweight project that predicts the mood of a song using an AI model built with PyTorch and served through FastAPI.  
@@ -19,32 +16,33 @@ Frontend uses TailwindCSS + vanilla HTML/JS.
 ---
 
 ## 📁 Project Structure
+
 ```
 
 VibeSync/
 │
 ├── backend/
-│ ├── models/
-│ │ └── mood_nn_model.pth
-│ ├── scripts/
-│ ├── src/
-│ │ ├── main.py
-│ │ ├── predict_mood.py
-│ │ ├── train_model.py
-│ │ └── data_preprocessing.py
-│ ├── requirements.txt
+│   ├── models/
+│   │   └── mood_nn_model.pth
+│   ├── scripts/
+│   ├── src/
+│   │   ├── main.py
+│   │   ├── predict_mood.py
+│   │   ├── train_model.py
+│   │   └── data_preprocessing.py
+│   ├── requirements.txt
 │
 └── frontend/
 ├── public/
-│ └── index.html
+│   └── index.html
 ├── src/
-│ ├── input.css
-│ ├── output.css
-│ ├── images/
-│ └── script.js
+│   ├── input.css
+│   ├── output.css
+│   ├── images/
+│   └── script.js
 ├── package.json
 
-````
+```
 
 ---
 
@@ -63,13 +61,57 @@ The backend uses:
 - torchvision
 - imblearn
 
-All of these are already listed inside **`backend/requirements.txt`**.
+All dependencies are listed inside **`backend/requirements.txt`**.
 
 ---
 
-## 📦 1. Install Dependencies
+## 🛠 0. Install Python and pip
 
-Make sure your virtual environment is active, then:
+Make sure Python 3.10+ is installed:
+
+- **Windows:** [Download Python](https://www.python.org/downloads/windows/) and select "Add Python to PATH" during installation.
+- **macOS:** Use Homebrew:
+  ```bash
+  brew install python
+  ```
+
+````
+
+* **Linux (Ubuntu/Debian):**
+
+  ```bash
+  sudo apt update
+  sudo apt install python3 python3-pip
+  ```
+
+Check installation:
+
+```bash
+python --version
+pip --version
+```
+
+---
+
+## 🛠 1. Set Up Virtual Environment (Recommended)
+
+Inside the `backend/` folder:
+
+```bash
+python -m venv venv       # Create virtual environment
+
+# Activate environment:
+# Windows:
+venv\Scripts\activate
+# macOS/Linux:
+source venv/bin/activate
+```
+
+---
+
+## 📦 2. Install Backend Dependencies
+
+Make sure your virtual environment is active, then run:
 
 ```bash
 pip install --upgrade pip
@@ -78,20 +120,25 @@ pip install -r requirements.txt
 
 ---
 
-## 🤖 2. Run the FastAPI Backend
+## 🤖 3. Run the FastAPI Backend
 
 Inside `backend/`:
 
 ```bash
-uvicorn backend.main:app --reload
+uvicorn src.main:app --reload
 ```
 
-👉 Server will start
+The server will start at:
+`http://127.0.0.1:8000`
+
+You can access the API docs at:
+`http://127.0.0.1:8000/docs`
+
 ---
 
-# 🎨 3. Install Frontend (Tailwind)
+# 🎨 4. Install Frontend (Tailwind)
 
-Go to frontend:
+Go to the frontend folder:
 
 ```bash
 cd frontend
@@ -110,7 +157,7 @@ This generates or updates:
 src/output.css
 ```
 
-Open `frontend/public/index.html` in browser to view UI.
+Open `frontend/public/index.html` in a browser to view the UI.
 
 ---
 
@@ -127,5 +174,10 @@ Made with AI, music, and caffeine.
 
 ```
 
+This is a complete, ready-to-use `README.md` file.
+
+If you want, I can also **add a full “How to Use the API” section with example requests** so it’s fully functional for someone cloning the project.
+
+Do you want me to add that?
 ```
 ````
