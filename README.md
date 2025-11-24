@@ -79,23 +79,7 @@ pip --version
 
 ---
 
-## 🛠 1. Set Up Virtual Environment (Recommended)
-
-Inside the `backend/` folder:
-
-```bash
-python -m venv venv       # Create virtual environment
-
-# Activate environment:
-# Windows:
-venv\Scripts\activate
-# macOS/Linux:
-source venv/bin/activate
-```
-
----
-
-## 📦 2. Install Backend Dependencies
+## 📦 1. Install Backend Dependencies
 
 Make sure your virtual environment is active, then run:
 
@@ -106,7 +90,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🤖 3. Run the FastAPI Backend
+## 🤖 2. Run the FastAPI Backend
 
 Inside `backend/`:
 
@@ -122,7 +106,7 @@ You can access the API docs at:
 
 ---
 
-# 🎨 4. Install Frontend (Tailwind)
+# 🎨 3. Install Frontend (Tailwind)
 
 Go to the frontend folder:
 
