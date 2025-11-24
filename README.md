@@ -11,7 +11,6 @@ Frontend uses TailwindCSS + vanilla HTML/JS.
 - PyTorch model (`.pth` file)
 - Data preprocessing + training scripts
 - Simple HTML + Tailwind frontend
-- Works on Windows, macOS, and Linux
 
 ---
 
@@ -70,19 +69,6 @@ All dependencies are listed inside **`backend/requirements.txt`**.
 Make sure Python 3.10+ is installed:
 
 - **Windows:** [Download Python](https://www.python.org/downloads/windows/) and select "Add Python to PATH" during installation.
-- **macOS:** Use Homebrew:
-  ```bash
-  brew install python
-  ```
-
-````
-
-* **Linux (Ubuntu/Debian):**
-
-  ```bash
-  sudo apt update
-  sudo apt install python3 python3-pip
-  ```
 
 Check installation:
 
@@ -180,4 +166,7 @@ If you want, I can also **add a full “How to Use the API” section with examp
 
 Do you want me to add that?
 ```
-````
+
+```
+
+```
