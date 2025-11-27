@@ -19,12 +19,12 @@ app.add_middleware(
 )
 
 # ---- Load scaler, feature columns, label encoder ----
-scaler = joblib.load("backend/models/scaler.pkl")
-feature_columns = joblib.load("backend/models/feature_columns.pkl")
-le = joblib.load("backend/models/label_encoder.pkl")
+scaler = joblib.load("models/scaler.pkl")
+feature_columns = joblib.load("models/feature_columns.pkl")
+le = joblib.load("models/label_encoder.pkl")
 
 # ---- Load songs dataset with mood ----
-songs_df = pd.read_csv("backend/data/processed/spotify_songs_with_mood.csv")
+songs_df = pd.read_csv("data/processed/spotify_songs_with_mood.csv")
 
 # ---- Define SAME neural network architecture used during training ----
 class MoodNN(nn.Module):
@@ -51,7 +51,7 @@ hidden_size = 64
 output_size = len(le.classes_)
 
 model = MoodNN(input_size, hidden_size, output_size)
-model.load_state_dict(torch.load("backend/models/mood_nn_model.pth", map_location="cpu"))
+model.load_state_dict(torch.load("models/mood_nn_model.pth", map_location="cpu"))
 model.eval()
 
 

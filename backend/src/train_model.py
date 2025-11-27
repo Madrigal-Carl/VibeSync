@@ -5,12 +5,12 @@ import pandas as pd
 import joblib
 
 # Load data
-X_train = pd.read_csv("backend/data/processed/X_train.csv").values
-X_test = pd.read_csv("backend/data/processed/X_test.csv").values
-y_train = pd.read_csv("backend/data/processed/y_train.csv")["mood"].values
-y_test = pd.read_csv("backend/data/processed/y_test.csv")["mood"].values
+X_train = pd.read_csv("data/processed/X_train.csv").values
+X_test = pd.read_csv("data/processed/X_test.csv").values
+y_train = pd.read_csv("data/processed/y_train.csv")["mood"].values
+y_test = pd.read_csv("data/processed/y_test.csv")["mood"].values
 
-le = joblib.load("backend/models/label_encoder.pkl")
+le = joblib.load("models/label_encoder.pkl")
 y_train_enc = le.transform(y_train)
 y_test_enc = le.transform(y_test)
 
@@ -81,5 +81,5 @@ with torch.no_grad():
     print(f"Test Accuracy: {accuracy:.4f}")
 
 # Save model
-torch.save(model.state_dict(), "backend/models/mood_nn_model.pth")
+torch.save(model.state_dict(), "models/mood_nn_model.pth")
 print("Model saved with dropout and label smoothing.")

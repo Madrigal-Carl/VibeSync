@@ -95,7 +95,7 @@ pip install -r requirements.txt
 Inside `backend/`:
 
 ```bash
-uvicorn src.main:app --reload
+uvicorn main:app --reload
 ```
 
 The server will start at:

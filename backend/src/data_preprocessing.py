@@ -5,11 +5,11 @@ import joblib
 import os
 
 # Directories
-os.makedirs("backend/data/processed", exist_ok=True)
-os.makedirs("backend/models", exist_ok=True)
+os.makedirs("data/processed", exist_ok=True)
+os.makedirs("models", exist_ok=True)
 
 # 1. Load dataset
-df = pd.read_csv("backend/data/raw/spotify_songs.csv")
+df = pd.read_csv("data/raw/spotify_songs.csv")
 print(f"Original dataset shape: {df.shape}")
 
 # 2. Drop unnecessary columns
@@ -57,13 +57,13 @@ scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
 # Save scaler and feature order
-joblib.dump(scaler, "backend/models/scaler.pkl")
-joblib.dump(list(X.columns), "backend/models/feature_columns.pkl")
+joblib.dump(scaler, "models/scaler.pkl")
+joblib.dump(list(X.columns), "models/feature_columns.pkl")
 
 # 7. Encode labels for neural network
 le = LabelEncoder()
 y_enc = le.fit_transform(y)
-joblib.dump(le, "backend/models/label_encoder.pkl")
+joblib.dump(le, "models/label_encoder.pkl")
 
 print("Label encoder classes:", le.classes_)
 
@@ -89,9 +89,9 @@ print("Testing class distribution (should be unchanged):\n",
       pd.Series(y_test_enc).value_counts())
 
 # 10. Save processed data
-pd.DataFrame(X_train_resampled, columns=X.columns).to_csv("backend/data/processed/X_train.csv", index=False)
-pd.DataFrame(X_test, columns=X.columns).to_csv("backend/data/processed/X_test.csv", index=False)
-pd.DataFrame(le.inverse_transform(y_train_resampled), columns=["mood"]).to_csv("backend/data/processed/y_train.csv", index=False)
-pd.DataFrame(y_test, columns=["mood"]).to_csv("backend/data/processed/y_test.csv", index=False)
+pd.DataFrame(X_train_resampled, columns=X.columns).to_csv("data/processed/X_train.csv", index=False)
+pd.DataFrame(X_test, columns=X.columns).to_csv("data/processed/X_test.csv", index=False)
+pd.DataFrame(le.inverse_transform(y_train_resampled), columns=["mood"]).to_csv("data/processed/y_train.csv", index=False)
+pd.DataFrame(y_test, columns=["mood"]).to_csv("data/processed/y_test.csv", index=False)
 
 print("Preprocessing completed. Scaler, feature columns, and label encoder saved.")
