@@ -1,3 +1,5 @@
+const API_URL = "https://vibesync-zane.onrender.com";
+
 // Clear inputs and reset UI
 function clearInput() {
     const inputs = document.querySelectorAll("#inputs-container input");
@@ -71,7 +73,7 @@ async function predictMood() {
     };
 
     try {
-        const res = await fetch("http://127.0.0.1:8000/predict", {
+        const res = await fetch(`${API_URL}/predict`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(features)
@@ -152,7 +154,7 @@ async function predictMood() {
 // Predict random mood
 async function predictRandomMood() {
     try {
-        const res = await fetch("http://127.0.0.1:8000/predict?randomize=true", {
+        const res = await fetch(`${API_URL}/predict?randomize=true`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: null // no body needed when randomizing
