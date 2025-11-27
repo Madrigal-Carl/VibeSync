@@ -109,24 +109,7 @@ You can access the API docs at:
 
 Go to the frontend folder:
 
-```bash
-cd ../frontend
-npm install
-```
-
-### Start Tailwind CLI (watch mode)
-
-```bash
-npm run build
-```
-
-This generates or updates:
-
-```
-src/output.css
-```
-
-Open `frontend/public/index.html` in a browser to view the UI.
+Open `frontend/public/index.html` in LiveServer extension.
 
 ---
 

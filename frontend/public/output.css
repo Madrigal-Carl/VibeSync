@@ -408,11 +408,11 @@
     }
     background-image: linear-gradient(var(--tw-gradient-stops));
   }
-  .bg-\[url\(\'\/frontend\/src\/images\/demo-bg\.png\'\)\] {
-    background-image: url('/frontend/src/images/demo-bg.png');
+  .bg-\[url\(\'images\/demo-bg\.png\'\)\] {
+    background-image: url('images/demo-bg.png');
   }
-  .bg-\[url\(\'\/frontend\/src\/images\/hero\.png\'\)\] {
-    background-image: url('/frontend/src/images/hero.png');
+  .bg-\[url\(\'images\/hero2\.png\'\)\] {
+    background-image: url('images/hero2.png');
   }
   .from-\[\#6A00FF\] {
     --tw-gradient-from: #6A00FF;
