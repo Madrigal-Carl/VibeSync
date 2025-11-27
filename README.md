@@ -85,14 +85,13 @@ Make sure your virtual environment is active, then run:
 
 ```bash
 pip install --upgrade pip
+cd backend
 pip install -r requirements.txt
 ```
 
 ---
 
 ## 🤖 2. Run the FastAPI Backend
-
-Inside `backend/`:
 
 ```bash
 uvicorn main:app --reload
@@ -111,7 +110,7 @@ You can access the API docs at:
 Go to the frontend folder:
 
 ```bash
-cd frontend
+cd ../frontend
 npm install
 ```
 
